@@ -1,0 +1,346 @@
+/* Import Less files */
+//@import "lib-mixins";
+@import "lib-reset";
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+body {
+  background: #000;
+  width: 100%;
+}
+.aem_magazine_main{
+  position: relative;
+  .mesDialog>div{
+    width:100%;
+    height:30px;
+    margin:auto;
+    background:rgba(0,0,0,0.5);
+    text-align:center;
+    font:14px arial;
+    line-height:30px;
+    color:white;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    -ms-border-radius:10px;
+    -o-border-radius:10px;
+    border-radius:10px;
+  }
+  .mesDialog{
+    background-color: transparent;
+    width:140px;
+    height:30px;
+    position: absolute;
+    top:50%;
+    left:50%;
+    margin-left:-70px;
+    margin-top: -15px;
+    z-index: 900;
+  }
+  .aem_magazine_wraper{
+    width:100%;
+    height: 644px;
+    background-color: #000;
+    opacity:.9;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index:800;
+    //display: none;
+  }
+  .aem_magazine {
+    max-width: 960px;
+    height:644px;
+    position: relative;
+    margin: 0 auto;
+    background-color: #cfcfcf;
+    width: 100%;
+    padding: 0 9px;
+    margin-top: 27px;
+    margin-bottom: 30px;
+    .aem-magazine-wraper {
+      overflow: hidden;
+      width: 960px;
+      height:700px;
+    }
+    .magazine-icon {
+      .icon {
+        font-size: 44px;
+        margin: 0 auto;
+        height: 44px;
+        width: 44px;
+        line-height: 60px;
+        padding: 8px;
+        color: #fff;
+      }
+      i {
+        position: absolute;
+        top: 50%;
+        margin-top: -22px;
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        line-height: 60px;
+      }
+
+      i:hover {
+        border: solid 1px #eee;
+      }
+      .arrow-left {
+        left: -80px;
+      }
+      .arrow-right {
+        right: -80px;
+      }
+    }
+    .shadow-wraper {
+      z-index: 600;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: none;
+      top: 0;
+      left: 0;
+      background-color: #000;
+      opacity: 0.9;
+      .thumbnail {
+        max-width: 960px;
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        li {
+          width: 200px;
+          height: 200px;
+          display: inline-block;
+          margin-right: 20px;
+          margin-bottom: 20px;
+        }
+      }
+
+      .thumbnailImage {
+        width: 200px;
+        height: 200px;
+        background-size: 100% 100%;
+      }
+    }
+  }
+
+}
+
+.aem-controller {
+  width: 100%;
+  height: 44px;
+  line-height: 44px;
+  background-color: #444444;
+
+  .icon-wraper {
+    max-width: 960px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    .icon-wraper-left {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .icon-wraper-center {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      .pageListInput {
+        margin: 0 4px 0 22px;
+        width: 90px;
+        height: 25px;
+        background-color: #fff;
+        color: #000;
+        text-align: center;
+        line-height: 44px;
+        border: 0;
+      }
+      .arhicve{
+        display: none;
+      }
+    }
+    .icon-wraper-right {
+      position: absolute;
+      top: 0;
+      right: 0;
+      i {
+        marign: 0 4px;
+      }
+      a {
+        cursor: pointer;
+        text-decoration: none;
+        color: #fff;
+        font-size: 16px;
+      }
+    }
+    .list-div {
+      display: inline-block;
+      position: relative;
+      .list-wraper {
+        display: none;
+        position: absolute;
+        bottom: 44px;
+        width: 200px;
+        left: -58px;
+        height: 200px;
+        z-index: 700;
+        background-color: #eee;
+        color: #333;
+        overflow-y: auto;
+        text-align: center;
+        p{
+          display: block;
+          height:20px;
+          margin-top: 10px;
+          margin-bottom: 10px;
+          color: #333333;
+          text-align: center;
+          line-height:20px;
+        }
+      }
+    }
+  }
+  i {
+    margin: 0 18px 0 21px;
+  }
+  .icon {
+    font-size: 18px;
+    color: #fff;
+    position: absolute;
+    height: 44px;
+    line-height: 44px;
+  }
+  .icon:hover {
+    font-size: 22px;
+    height: 44px;
+  }
+}
+
+#magazine {
+  margin: 0 auto;
+  width: 960px;
+  height: 644px;
+  margin-left: -240px;
+}
+
+#magazine .page {
+  background-color: #ccc;
+  background-size: 100% 100% ;
+  background-repeat: no-repeat;
+}
+
+#magazine {
+  //transition: margin-left .5s;
+  //-webkit-transition: margin-left .5s;
+  //-moz-transition: margin-left .5s;
+  //-o-transition: margin-left .5s;
+  //-ms-transition: margin-left .5s;
+  //transition: margin-left .5s;
+}
+
+#magazine .loader{
+  background-image:url(../img/loader.gif);
+  width:22px;
+  height:22px;
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-left:-11px;
+  margin-top:-11px;
+}
+
+@media (max-width: 480px) {
+  ul{
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    margin:0;padding: 0;
+  }
+  .aem_magazine_main .aem_magazine .shadow-wraper .thumbnail li{
+    padding:10px 10%;
+    width:40%;
+    height:auto;
+    margin:0;
+    padding:0;
+  }
+  .aem_magazine_main .aem_magazine .shadow-wraper .thumbnailImage{
+    width:100%;
+    height:100%;
+  }
+  #aem_magazine_main{
+    width:100%;
+    max-width: 480px;
+    height:auto;
+    position: relative;
+    .aem_magazine{
+      width:100%;padding: 0;
+      height:auto;
+      margin-bottom: 40px;
+      margin-top: 0px;
+      .magazine-icon{
+        display: none;
+      }
+    }
+    .container{
+      width:100%;
+      height:auto;
+    }
+    #magazine{
+      height:auto;
+      width:100%;
+      margin:0 auto;
+      max-width:480px;
+      .swiper-wrapper{
+        width:100%;
+        img{
+          width:100%;}
+      }
+    }
+  }
+  .aem-controller{
+    position: fixed;
+    bottom:0;
+    left:0;
+    z-index:900;
+    .icon-wraper{
+      text-align: center;
+      margin:0 auto;
+      .icon-wraper-left{
+        display: none;
+      }
+      i{
+        margin:0 6px;
+        text-align: left;
+      }
+      .icon{
+        height:1em;
+        position: static;
+      }
+      .icon:hover{font-size: 18px;}
+      .icon-wraper-center{
+        .pageListInput{
+          width:40px;    margin: 0 ;
+        }
+        .zoom{
+          display: none;
+        }
+        .arhicve{
+          display: inline;
+          height: 44px;
+          line-height: 44px;
+        }
+      }
+      .icon-wraper-right{
+          display: none;
+      }
+    }
+  }
+}

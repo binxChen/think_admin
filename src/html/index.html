@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Aem杂志</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="apple-mobile-web-app-capable" content="no" />
+    <meta name="format-detection" content="telephone=no">
+    <script type="text/javascript" src="../js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="../js/swiper.min.js"></script>
+    <script type="text/javascript" src="../js/turn.js"></script>
+    <script type="text/javascript" src="../js/iconfont.js"></script>
+    <script type="text/javascript" src="../js/magazine.js"></script>
+    <script type="text/javascript" src="../js/zoom.min.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="../css/swiper.min.css" />-->
+    <link rel="stylesheet" type="text/css" href="../css/style-index.css" />
+
+</head>
+<body>
+<div class="aem_magazine_main" id="aem_magazine_main">
+    <div class="aem_magazine" id="magazine-viewport">
+        <div class="aem-magazine-wraper container" >
+            <div id="magazine">
+
+                <!--<div class="swiper-pagination"></div>-->
+                <!--<div class="swiper-button-prev"></div>-->
+                <!--<div class="swiper-button-next"></div>-->
+            </div>
+        </div>
+        <div class="magazine-icon">
+            <i class="arrow-left" onclick="left()"><svg class="icon" aria-hidden="true">
+                <use xlink:href="#myicon-left"></use>
+            </svg></i>
+            <i class="arrow-right" onclick="right()" alt=""><svg class="icon" aria-hidden="true">
+                <use xlink:href="#myicon-right"></use>
+            </svg></i>
+        </div>
+        <div class="shadow-wraper">
+            <div class="thumbnail">
+                <ul>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="aem-controller">
+    <div class="icon-wraper">
+        <div class="icon-wraper-left">
+            <i class=""><svg class="icon" aria-hidden="true"><title>分享</title>
+                <use xlink:href="#myicon-share"></use>
+            </svg></i>
+            <i class=""><svg class="icon" aria-hidden="true"><title>下载</title>
+            <use xlink:href="#myicon-download"></use>
+        </svg></i>
+        </div>
+        <div class="icon-wraper-center">
+
+            <i onclick="checkThumbnail()"><svg class="icon" aria-hidden="true">
+                <use xlink:href="#myicon-package"></use><title>缩略图</title>
+            </svg></i>
+            <div class="list-div">
+                <i onclick="checkList()"><svg class="icon" aria-hidden="true">
+                <use xlink:href="#myicon-list"></use><title>目录</title>
+            </svg></i>
+                <div class="list-wraper">
+                </div>
+            </div>
+            <i onclick="turnLeft()" ><svg class="icon" aria-hidden="true">
+                <use xlink:href="#myicon-turn-left"></use><title>回到最开始</title>
+            </svg></i>
+            <i onclick="left()"><svg class="icon" aria-hidden="true"><title>上一页</title>
+                <use xlink:href="#myicon-left"></use>
+            </svg></i>
+            <input type="text" class="pageListInput" value="" onkeydown="keydownInput(event)">
+            <i onclick="right()" ><svg class="icon" aria-hidden="true"><title>下一页</title>
+                <use xlink:href="#myicon-right"></use>
+            </svg></i>
+            <i onclick="turnRight()">
+                <svg class="icon" aria-hidden="true">
+                    <title>前往最后一页</title>
+                <use xlink:href="#myicon-turn-right"></use>
+            </svg></i>
+             <i onclick="zoomIn()" class="zoom"><svg class="icon" aria-hidden="true">
+                <use xlink:href="#myicon-amplify"></use><title>放大</title>
+            </svg></i>
+             <i onclick="zoomOut()" class="zoom"><svg class="icon" aria-hidden="true">
+                <use xlink:href="#myicon-reduce"></use><title>缩小</title>
+            </svg></i>
+            <i onclick="resize()"><svg class="icon" aria-hidden="true"><title>比例</title>
+                <use xlink:href="#myicon-scale"></use>
+            </svg></i>
+            <i class="arhicve"><svg class="icon" aria-hidden="true">
+                <use xlink:href="#myicon-wenzhang"></use>
+            </svg></i>
+        </div>
+        <div class="icon-wraper-right">
+            <i><svg class="icon" aria-hidden="true">
+                <use xlink:href="#myicon-wenzhang"></use>
+            </svg></i>
+            <a href="baidu.com">《安利姿采》文章合集</a>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    //定义全局的图片变量
+    window.AEM_MAGAZINE_IAMGE = [
+        {img:'../img/01.jpg',title:'第一页'},
+        {img:'../img/02.jpg',title:'第二页'},
+        {img:'../img/03.jpg',title:'第三页'},
+        {img:'../img/04.jpg',title:'第四页'},
+        {img:'../img/05.jpg',title:'第五页'},
+        {img:'../img/06.jpg',title:'第六页'},
+        {img:'../img/1.jpg',title:'第六页'},
+        {img:'../img/2.jpg',title:'第七页'},
+        {img:'../img/3.jpg',title:'第八页'},
+        {img:'../img/4.jpg',title:'第九页'},
+        {img:'../img/5.jpg',title:'第十页'},
+        {img:'../img/6.jpg',title:'第11页'},
+        {img:'../img/7.jpg',title:'第12页'},
+        {img:'../img/8.jpg',title:'第13页'},
+        {img:'../img/9.jpg',title:'第14页'},
+        {img:'../img/10.jpg',title:'第15页'},
+        {img:'../img/11.jpg',title:'第16页'},
+        {img:'../img/12.jpg',title:'第17页'},
+    ]
+    $(window).ready(function() {
+        var browser = {
+            versions: function() {
+                var u = navigator.userAgent, app = navigator.appVersion;
+                return {     //移动终端浏览器版本信息
+                    trident: u.indexOf('Trident') > -1, //IE内核
+                    presto: u.indexOf('Presto') > -1, //opera内核
+                    webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                    gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                    mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                    ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                    android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+                    iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                    iPad: u.indexOf('iPad') > -1, //是否iPad
+                    webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+                };
+            } (),
+            language: (navigator.browserLanguage || navigator.language).toLowerCase()
+        };
+        if(browser.versions.mobile||browser.versions.android||browser.versions.ios||browser.versions.iPhone){
+            console.log('app');
+            loadingApp();
+        }else{
+            console.log('pc');
+            loadingPC();
+        }
+
+        //todo:UA的判断之后再加入适当的响应式
+
+    });
+
+    function showDialog(mes) {
+        $('<div />', {'class': 'mesDialog'}).html('<div>'+mes+'</div>')
+         .appendTo($('#aem_magazine_main'))
+         .delay(3000)
+         .animate({opacity:0}, 500, function() {
+         });
+    }
+
+    //todo:状态效果
+    //todo:还原按钮
+</script>
+
+</body>
+</html>
